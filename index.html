@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QWIX Halal Trader — отчёт бумажной торговли</title>
+<style>
+  :root{
+    --bg:#0b0f14; --panel:#121823; --panel2:#0f141d; --line:#223044;
+    --text:#e8edf4; --muted:#8fa0b5; --green:#3ddc84; --red:#ff6b6b; --accent:#4da3ff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);
+    font:15px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;}
+  .wrap{max-width:980px;margin:0 auto;padding:24px 16px 60px}
+  h1{font-size:22px;margin:0 0 4px}
+  .sub{color:var(--muted);font-size:13px;margin:0 0 24px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:28px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px}
+  .card .k{color:var(--muted);font-size:12px;margin-bottom:6px}
+  .card .v{font-size:20px;font-weight:600}
+  .pos{color:var(--green)} .neg{color:var(--red)}
+  h2{font-size:16px;margin:28px 0 10px;border-top:1px solid var(--line);padding-top:20px}
+  .track{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:14px}
+  .track-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:baseline}
+  .track-head b{font-size:15px}
+  .tag{display:inline-block;font-size:11px;color:var(--muted);background:var(--panel2);
+    border:1px solid var(--line);border-radius:6px;padding:2px 7px;margin-top:4px}
+  .metrics{display:flex;gap:18px;flex-wrap:wrap;margin:10px 0;font-size:13px;color:var(--muted)}
+  .metrics b{color:var(--text)}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+  th,td{text-align:right;padding:6px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+  th:first-child,td:first-child{text-align:left}
+  th{color:var(--muted);font-weight:500;font-size:12px}
+  .empty{color:var(--muted);font-size:13px;padding:8px 0}
+  .rules{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px;margin-top:28px;font-size:13px;color:var(--muted)}
+  .rules b{color:var(--text)}
+  .rules ol{margin:8px 0 0;padding-left:20px}
+  .rules li{margin-bottom:4px}
+  footer{color:var(--muted);font-size:12px;margin-top:24px;text-align:center}
+  a{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>QWIX Halal Trader</h1>
+  <p class="sub">Бумажная торговля (без реальных денег). Данные обновляются сами после каждого часового прохода бота.
+    <span id="updated"></span></p>
+
+  <div class="cards" id="overall"></div>
+
+  <h2>Треки</h2>
+  <div id="tracks"></div>
+
+  <div class="rules">
+    <b>Правила отбора инструментов (халяль)</b>
+    <ol>
+      <li>Только спот — покупаем актив целиком и владеем им. Фьючерсы, свопы, опционы, CFD и плечевые токены исключены.</li>
+      <li>Без шортов — продать можно только то, что уже есть в портфеле.</li>
+      <li>Без плеча, маржи и заёмных денег — покупка не может превышать свободные средства.</li>
+      <li>Только белый список активов трека, проверенный заранее.</li>
+      <li>Форекс в стоп-листе политики: валютные пары торгуются только на бумаге, реальный режим закрыт безусловно.</li>
+      <li>Каждый ордер проходит халяль-стража; любое нарушение останавливает торговлю по треку.</li>
+    </ol>
+  </div>
+
+  <footer>QWIX GROUP · автоотчёт, без ручного вмешательства</footer>
+</div>
+
+<script>
+const fmt$ = n => (n<0?'-':'') + '$' + Math.abs(n).toFixed(2);
+const fmtPct = n => (n>0?'+':'') + n.toFixed(2) + '%';
+const cls = n => n>0?'pos':(n<0?'neg':'');
+
+fetch('data.json?t=' + Date.now()).then(r => r.json()).then(render);
+
+function render(d){
+  document.getElementById('updated').textContent =
+    '· последнее обновление: ' + d.generated_at.replace('T',' ') + ' UTC';
+
+  const o = d.overall;
+  document.getElementById('overall').innerHTML = `
+    <div class="card"><div class="k">Старт (сумма треков)</div><div class="v">${fmt$(o.start_equity)}</div></div>
+    <div class="card"><div class="k">Сейчас</div><div class="v">${fmt$(o.equity_now)}</div></div>
+    <div class="card"><div class="k">Доходность с начала</div><div class="v ${cls(o.total_return_pct)}">${fmtPct(o.total_return_pct)}</div></div>
+    <div class="card"><div class="k">Сделок закрыто</div><div class="v">${o.trades_count}</div></div>
+    <div class="card"><div class="k">Активных треков</div><div class="v">${o.tracks_count}</div></div>
+  `;
+
+  const box = document.getElementById('tracks');
+  box.innerHTML = d.tracks.map(t => `
+    <div class="track">
+      <div class="track-head">
+        <div><b>${t.title}</b><br><span class="tag">${t.halal_label}</span></div>
+        <div style="text-align:right">
+          <div class="v ${cls(t.total_return_pct)}" style="font-size:18px">${fmtPct(t.total_return_pct)}</div>
+          <div style="color:var(--muted);font-size:12px">с ${t.started_at.slice(0,10)}</div>
+        </div>
+      </div>
+      <div class="metrics">
+        <span>капитал: <b>${fmt$(t.equity_now)}</b> из ${fmt$(t.start_equity)}</span>
+        <span>сделок: <b>${t.trades_count}</b></span>
+        <span>просадка: <b>${t.max_drawdown_pct.toFixed(1)}%</b></span>
+        <span>Sharpe: <b>${t.sharpe}</b></span>
+        <span>profit factor: <b>${t.profit_factor ?? '—'}</b></span>
+        <span>win rate: <b>${t.win_rate_pct}%</b></span>
+        <span>открыто позиций: <b>${t.open_positions}</b></span>
+        ${t.halted ? `<span class="neg">ОСТАНОВЛЕН: ${t.halted}</span>` : ''}
+      </div>
+      ${t.trades.length ? `
+      <table>
+        <thead><tr><th>Инструмент</th><th>Вход</th><th>Выход</th><th>Цена вх.</th><th>Цена вых.</th>
+          <th>Кол-во</th><th>PnL $</th><th>PnL %</th><th>Причина</th></tr></thead>
+        <tbody>
+          ${t.trades.map(tr => `
+            <tr>
+              <td style="text-align:left">${tr.symbol}</td>
+              <td>${tr.entry_time.replace('T',' ').slice(0,16)}</td>
+              <td>${tr.exit_time.replace('T',' ').slice(0,16)}</td>
+              <td>${tr.entry_price.toFixed(4)}</td>
+              <td>${tr.exit_price.toFixed(4)}</td>
+              <td>${tr.qty}</td>
+              <td class="${cls(tr.pnl)}">${fmt$(tr.pnl)}</td>
+              <td class="${cls(tr.pnl_pct*100)}">${fmtPct(tr.pnl_pct*100)}</td>
+              <td>${tr.reason}</td>
+            </tr>`).join('')}
+        </tbody>
+      </table>` : '<div class="empty">сделок по этому треку ещё не было</div>'}
+    </div>
+  `).join('');
+}
+</script>
+</body>
+</html>

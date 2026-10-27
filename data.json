@@ -1,0 +1,165 @@
+{
+ "generated_at": "2026-10-27T01:55:13+00:00",
+ "overall": {
+  "start_equity": 4000.0,
+  "equity_now": 3923.37,
+  "total_return_pct": -1.92,
+  "trades_count": 5,
+  "tracks_count": 4
+ },
+ "tracks": [
+  {
+   "name": "etf",
+   "title": "Халяль-ETF США",
+   "symbols": [
+    "SPUS",
+    "HLAL",
+    "UMMA"
+   ],
+   "halal_status": "screened",
+   "halal_label": "допущен политикой — фонд с шариатским скринингом",
+   "started_at": "2026-10-01T16:03:16.949635+00:00",
+   "start_equity": 1000.0,
+   "equity_now": 982.75,
+   "total_return_pct": -1.73,
+   "max_drawdown_pct": 2.04,
+   "sharpe": -6.24,
+   "profit_factor": 0.0,
+   "win_rate_pct": 0.0,
+   "open_positions": 0,
+   "halted": null,
+   "trades_count": 2,
+   "trades": [
+    {
+     "symbol": "SPUS",
+     "entry_time": "2026-10-05T14:02:02.572375+00:00",
+     "exit_time": "2026-10-15T14:02:03.385410+00:00",
+     "entry_price": 60.5752725,
+     "exit_price": 59.21038000000001,
+     "qty": 4.8976,
+     "pnl": -7.39,
+     "pnl_pct": -0.0249,
+     "reason": "стоп-лосс"
+    },
+    {
+     "symbol": "HLAL",
+     "entry_time": "2026-10-06T15:02:14.962413+00:00",
+     "exit_time": "2026-10-14T18:02:03.655722+00:00",
+     "entry_price": 76.8233925,
+     "exit_price": 74.46275,
+     "qty": 3.881,
+     "pnl": -9.87,
+     "pnl_pct": -0.0331,
+     "reason": "стоп-лосс"
+    }
+   ]
+  },
+  {
+   "name": "rotation",
+   "title": "Халяль-ETF · ротация раз в месяц",
+   "symbols": [
+    "SPUS",
+    "HLAL",
+    "UMMA"
+   ],
+   "halal_status": "screened",
+   "halal_label": "допущен политикой — фонд с шариатским скринингом",
+   "started_at": "2026-10-06T17:58:54.192993+00:00",
+   "start_equity": 1000.0,
+   "equity_now": 953.29,
+   "total_return_pct": -4.67,
+   "max_drawdown_pct": 5.57,
+   "sharpe": -5.94,
+   "profit_factor": 0.0,
+   "win_rate_pct": 0.0,
+   "open_positions": 1,
+   "halted": null,
+   "trades_count": 0,
+   "trades": []
+  },
+  {
+   "name": "crypto",
+   "title": "Крипто-спот",
+   "symbols": [
+    "BTC/USDT",
+    "ETH/USDT"
+   ],
+   "halal_status": "pending_scholar",
+   "halal_label": "только бумага — ждёт решения учёного по крипте",
+   "started_at": "2026-10-01T07:12:47.113112+00:00",
+   "start_equity": 1000.0,
+   "equity_now": 990.1,
+   "total_return_pct": -0.99,
+   "max_drawdown_pct": 1.02,
+   "sharpe": -4.08,
+   "profit_factor": 0.0,
+   "win_rate_pct": 0.0,
+   "open_positions": 0,
+   "halted": null,
+   "trades_count": 1,
+   "trades": [
+    {
+     "symbol": "BTC/USDT",
+     "entry_time": "2026-10-21T16:02:29.031210+00:00",
+     "exit_time": "2026-10-22T04:00:00+00:00",
+     "entry_price": 84559.87881,
+     "exit_price": 82086.40359677379,
+     "qty": 0.003749,
+     "pnl": -9.9,
+     "pnl_pct": -0.0312,
+     "reason": "стоп-лосс"
+    }
+   ]
+  },
+  {
+   "name": "forex",
+   "title": "Валютные пары (Forex)",
+   "symbols": [
+    "EUR/USD",
+    "GBP/USD",
+    "AUD/USD",
+    "NZD/USD",
+    "JPY/USD",
+    "CHF/USD",
+    "CAD/USD"
+   ],
+   "halal_status": "stoplist",
+   "halal_label": "только бумага — в стоп-листе халяль-политики, реальные деньги невозможны",
+   "started_at": "2026-10-01T07:43:36.245172+00:00",
+   "start_equity": 1000.0,
+   "equity_now": 997.23,
+   "total_return_pct": -0.28,
+   "max_drawdown_pct": 0.66,
+   "sharpe": -1.32,
+   "profit_factor": 0.0,
+   "win_rate_pct": 0.0,
+   "open_positions": 0,
+   "halted": null,
+   "trades_count": 2,
+   "trades": [
+    {
+     "symbol": "GBP/USD",
+     "entry_time": "2026-10-16T15:02:02.883551+00:00",
+     "exit_time": "2026-10-26T12:02:26.915428+00:00",
+     "entry_price": 1.3353896253108979,
+     "exit_price": 1.3346414935111999,
+     "qty": 374.36,
+     "pnl": -0.33,
+     "pnl_pct": -0.0007,
+     "reason": "закрытие ниже минимума 20 свечей"
+    },
+    {
+     "symbol": "CHF/USD",
+     "entry_time": "2026-10-16T11:02:02.404187+00:00",
+     "exit_time": "2026-10-26T12:02:26.915428+00:00",
+     "entry_price": 1.2154541605591773,
+     "exit_price": 1.2096539935112,
+     "qty": 411.36,
+     "pnl": -2.44,
+     "pnl_pct": -0.0049,
+     "reason": "закрытие ниже минимума 20 свечей"
+    }
+   ]
+  }
+ ]
+}
