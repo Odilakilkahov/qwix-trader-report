@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-27T23:03:06+00:00",
+ "generated_at": "2026-10-28T00:02:52+00:00",
  "overall": {
   "start_equity": 4000.0,
   "equity_now": 3930.79,
@@ -91,7 +91,7 @@
    "equity_now": 990.1,
    "total_return_pct": -0.99,
    "max_drawdown_pct": 1.02,
-   "sharpe": -4.08,
+   "sharpe": -4.0,
    "profit_factor": 0.0,
    "win_rate_pct": 0.0,
    "open_positions": 0,
@@ -130,7 +130,7 @@
    "equity_now": 997.23,
    "total_return_pct": -0.28,
    "max_drawdown_pct": 0.66,
-   "sharpe": -1.32,
+   "sharpe": -1.29,
    "profit_factor": 0.0,
    "win_rate_pct": 0.0,
    "open_positions": 0,
