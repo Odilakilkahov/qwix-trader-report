@@ -1,8 +1,8 @@
 {
- "generated_at": "2026-11-02T06:02:55+00:00",
+ "generated_at": "2026-11-02T07:02:50+00:00",
  "overall": {
   "start_equity": 4000.0,
-  "equity_now": 3888.01,
+  "equity_now": 3888.2,
   "total_return_pct": -2.8,
   "trades_count": 6,
   "tracks_count": 4
@@ -127,10 +127,10 @@
    "halal_label": "только бумага — в стоп-листе халяль-политики, реальные деньги невозможны",
    "started_at": "2026-10-01T07:43:36.245172+00:00",
    "start_equity": 1000.0,
-   "equity_now": 993.09,
-   "total_return_pct": -0.69,
+   "equity_now": 993.28,
+   "total_return_pct": -0.67,
    "max_drawdown_pct": 1.15,
-   "sharpe": -2.88,
+   "sharpe": -2.79,
    "profit_factor": 0.0,
    "win_rate_pct": 0.0,
    "open_positions": 1,
