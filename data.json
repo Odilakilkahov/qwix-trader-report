@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-06T23:02:58+00:00",
+ "generated_at": "2026-11-07T00:02:28+00:00",
  "overall": {
   "start_equity": 4000.0,
   "equity_now": 3853.11,
@@ -103,7 +103,7 @@
    "equity_now": 990.1,
    "total_return_pct": -0.99,
    "max_drawdown_pct": 1.02,
-   "sharpe": -3.46,
+   "sharpe": -3.42,
    "profit_factor": 0.0,
    "win_rate_pct": 0.0,
    "open_positions": 0,
