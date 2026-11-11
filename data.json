@@ -1,9 +1,9 @@
 {
- "generated_at": "2026-11-11T18:02:24+00:00",
+ "generated_at": "2026-11-11T19:02:35+00:00",
  "overall": {
   "start_equity": 4000.0,
-  "equity_now": 3884.53,
-  "total_return_pct": -2.89,
+  "equity_now": 3885.72,
+  "total_return_pct": -2.86,
   "trades_count": 9,
   "tracks_count": 4
  },
@@ -66,10 +66,10 @@
    "halal_label": "допущен политикой — фонд с шариатским скринингом",
    "started_at": "2026-10-06T17:58:54.192993+00:00",
    "start_equity": 1000.0,
-   "equity_now": 920.72,
-   "total_return_pct": -7.93,
+   "equity_now": 921.91,
+   "total_return_pct": -7.81,
    "max_drawdown_pct": 11.6,
-   "sharpe": -3.07,
+   "sharpe": -3.0,
    "profit_factor": 0.0,
    "win_rate_pct": 0.0,
    "open_positions": 1,
